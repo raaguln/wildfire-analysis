@@ -1,3 +1,7 @@
+# Large data files that can't be uploaded to GitHub
+raw_data/USGS_Wildland_Fire_Combined_Dataset.json
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
