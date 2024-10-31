@@ -92,10 +92,11 @@ def process_fire_feature(wf_feature, place, unique_id):
 
     # Creating dictionary with fire information
     fire = {
-        'year': wf_year,
-        'name': wf_name,
-        'size': wf_size,
-        'type': wf_type,
+        **wf_feature['attributes'],
+        # 'year': wf_year,
+        # 'name': wf_name,
+        # 'size': wf_size,
+        # 'type': wf_type,
     }
     # Create a unique key for each fire information to store it in the fires_info dictionary
     key = f'{wf_year}-{unique_id}-{wf_name}'
@@ -111,7 +112,10 @@ def process_fire_feature(wf_feature, place, unique_id):
 
         # Compute using the shortest distance to any point on the perimeter
         shortest_distance = shortest_distance_from_place_to_fire_perimeter(place['latlon'], ring_data)
-        fire["distance_shortest"] = shortest_distance
+        if len(shortest_distance) > 0:
+            fire["distance_shortest"] = shortest_distance[0]
+        else:
+            fire["distance_shortest"] = None
         # print(f"The closest distance of fire '{wf_name}' ({wf_size:1.2f} acres) from {wf_year} was {shortest_distance[0]:1.2f} miles to {place['city']}")
         # print(f"\tThe cloest perimiter point lat,lon {shortest_distance[1][0]},{shortest_distance[1][1]}")
 
@@ -125,9 +129,6 @@ def process_fire_feature(wf_feature, place, unique_id):
         perimeter_start = ring[0]
         fire["perimeter_start"] = perimeter_start
         # print(f"\tOne perimiter point lat,lon {perimeter_start[0]},{perimeter_start[1]}")
-        
-        # # Store the information
-        # fires_info[key] = fire
 
         return key, fire
     except Exception as e:
