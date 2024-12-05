@@ -48,6 +48,39 @@ on the total population of the county
 ## Intermediate Data Files
 Each notebook creates some intermediate files that are used by other analysis notebooks. They are located in `intermediate/` folder. Below is a list of the generated intermediary files:
 1. `df_aqi_yearly_weighted.csv` - Contains the yearly AQI estimates for our city.
+Note - this is not present in the repository because GitHub limits the size of the dataset that can be uploaded in a repo. Use the codebooks to generate this file (refer methodology).
+```
+state_code: string, the code representing the state.
+county_code: string, the code representing the county.
+site_number: string, the unique number identifying the monitoring site.
+parameter_code: string, the code representing the pollutant parameter.
+poc: integer, the type of sampling point (1 for primary, 2 for secondary, etc.).
+latitude: float, the latitude coordinate of the site.
+longitude: float, the longitude coordinate of the site.
+datum: string, the geographic coordinate system used (e.g., WGS84).
+parameter: string, the name of the air quality parameter being measured.
+sample_duration_code: string, a code representing the sample duration type.
+sample_duration: string, the duration of the sample (e.g., "24 HOUR").
+pollutant_standard: string, the standard for the pollutant (e.g., PM10 24-hour standard).
+date_local: string, the local date of the measurement.
+units_of_measure: string, the units used to measure the pollutant (e.g., Micrograms/cubic meter).
+event_type: string, the type of event (e.g., "No Events").
+observation_count: integer, the number of observations recorded.
+observation_percent: float, the percentage of valid observations.
+validity_indicator: string, a validity indicator (e.g., "Y" for valid).
+arithmetic_mean: float, the arithmetic mean value of the pollutant.
+first_max_value: float, the first maximum value of the pollutant observed.
+first_max_hour: integer, the hour during which the first maximum value was observed.
+aqi: integer, the Air Quality Index value.
+method_code: string, the code representing the method used for measurement.
+method: string, the detailed name of the method used for measurement.
+local_site_name: string, the name of the local monitoring site.
+county: string, the name of the county where the site is located.
+city: string, the name of the city where the site is located.
+cbsa_code: string, the code representing the Core Based Statistical Area (CBSA).
+cbsa: string, the name of the Core Based Statistical Area (e.g., "Dallas-Fort Worth-Arlington, TX").
+date_of_last_change: string, the date of the last change to the data record.
+```
 2. `fire_distance_info.json` - Contains the infomation about how far each  wildfire is from the city.
 ```
 year: integer, represents the year of the data entry.
