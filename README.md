@@ -1,4 +1,4 @@
-# wildfire-analysis
+# Wildfire Analysis
 
 ## Goal of this project
 The goal of this work is to explore the impact of wildfires on Arlington, Texas.
